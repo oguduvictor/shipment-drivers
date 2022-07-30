@@ -38,6 +38,11 @@ internal class ShipmentService : IShipmentService
 
         shipment.Id = StringHelpers.GenerateEntityId();
 
+        shipment.CreatedBy = Guid.NewGuid().ToString();
+        shipment.UpdatedBy = Guid.NewGuid().ToString();
+        shipment.CreatedAt = DateTime.UtcNow;
+        shipment.UpdatedAt = DateTime.UtcNow;
+
         return await _shipmentRepository.CreateAsync(shipment);
     }
 
@@ -51,6 +56,9 @@ internal class ShipmentService : IShipmentService
         }
         
         shipment.CopyFromSourceToTarget(updateShipmentDto);
+
+        shipment.UpdatedBy = Guid.NewGuid().ToString();
+        shipment.UpdatedAt = DateTime.UtcNow;
 
         await _shipmentRepository.UpdateAsync(shipment);
     }

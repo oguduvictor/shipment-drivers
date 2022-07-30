@@ -15,14 +15,14 @@ internal class ShipmentRepository : IShipmentRepository
 
     public async Task<List<Shipment>> GetAsync(int skip, int take)
     {
-        return await _dbContext.Shipments.AsNoTracking()
+        return await _dbContext.Shipments.Include(x => x.Driver).AsNoTracking()
             .Skip(skip).Take(take)
             .ToListAsync();
     }
 
     public async Task<Shipment?> GetByIdAsync(string id)
     {
-        return await _dbContext.Shipments.FindAsync(id);
+        return await _dbContext.Shipments.Include(x => x.Driver).FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<string> CreateAsync(Shipment shipment)

@@ -11,10 +11,11 @@ public class ShipmentDto
         Comments = shipment.Comments;
         Destination = shipment.Destination;
         Origin = shipment.Origin;
-        Status = shipment.Status;
+        Status = Enum.GetName(shipment.Status);
         AssociatedBarcode = shipment.AssociatedBarcode;
         CreatedAt = shipment.CreatedAt;
         CreatedBy = shipment.CreatedBy;
+        Driver = $"{shipment.Driver?.FirstName} {shipment.Driver?.LastName}";
         DriverId = shipment.DriverId;
         EffectiveDate = shipment.EffectiveDate;
         PlannedDate = shipment.PlannedDate;
@@ -26,8 +27,9 @@ public class ShipmentDto
     public string Id { get; set; }
     public string Origin { get; set; }
     public string Destination { get; set; }
-    public ShipmentStatusEnum Status { get; set; }
+    public string Status { get; set; }
     public DateTime? ShipmentDate { get; set; }
+    public string Driver { get; set; }
     public string DriverId { get; set; }
     public DateTime? PlannedDate { get; set; }
     public DateTime? EffectiveDate { get; set; }

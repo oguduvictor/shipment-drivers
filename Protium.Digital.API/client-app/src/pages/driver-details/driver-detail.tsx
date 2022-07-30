@@ -79,8 +79,8 @@ const DriverDetail = () => {
             first_name: driver?.first_name || '',
             last_name: driver?.last_name || '',
             vehicle_plate: driver?.vehicle_plate || '',
-            start_date: driver ? DateHelper.parseToHtmlDate(driver.start_date) : '',
-            expiration_date: driver ? DateHelper.parseToHtmlDate(driver.expiration_date) : '',
+            start_date: driver ? DateHelper.parseToHtmlInputDate(driver.start_date) : '',
+            expiration_date: driver ? DateHelper.parseToHtmlInputDate(driver.expiration_date) : '',
             active: driver?.active || false
         }}
     >
