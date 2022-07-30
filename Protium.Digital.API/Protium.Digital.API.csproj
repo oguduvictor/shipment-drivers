@@ -18,4 +18,15 @@
       <ProjectReference Include="..\Protium.Digital.Shared\Protium.Digital.Shared.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <Content Remove="client-app\**" />
+        <Content Remove="node_modules\**" />
+        <Content Include="client-app\package.json" />
+        <Content Include="client-app\tsconfig.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="client-app\src\pages\drivers" />
+    </ItemGroup>
+
 </Project>

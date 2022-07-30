@@ -50,7 +50,7 @@ internal class ShipmentService : IShipmentService
             throw new NullReferenceException();
         }
         
-        updateShipmentDto.CopyFromSourceToTarget(shipment);
+        shipment.CopyFromSourceToTarget(updateShipmentDto);
 
         await _shipmentRepository.UpdateAsync(shipment);
     }

@@ -50,7 +50,7 @@ internal class DriverService : IDriverService
             throw new NullReferenceException();
         }
 
-        updateDriverDto.CopyFromSourceToTarget(driver);
+        driver.CopyFromSourceToTarget(updateDriverDto);
 
         await _driverRepository.UpdateAsync(driver);
     }
