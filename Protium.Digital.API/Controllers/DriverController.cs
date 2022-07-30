@@ -21,6 +21,12 @@ namespace Protium.Digital.API.Controllers
             return await _driverService.GetAsync(page);
         }
 
+        [HttpGet]
+        public async Task<IEnumerable<NamedId>> GetSummaries()
+        {
+            return await _driverService.GetSummariesAsync();
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Protium.Digital.Domain.Dtos;
 using Protium.Digital.Domain.Entities;
 using Protium.Digital.Domain.Interfaces.Repositories;
 
@@ -18,6 +19,11 @@ internal class DriverRepository : IDriverRepository
         return await _dbContext.Drivers.AsNoTracking()
             .Skip(skip).Take(take)
             .ToListAsync();
+    }
+
+    public async Task<IEnumerable<NamedId>> GetSummariesAsync()
+    {
+        return await _dbContext.Drivers.Select(x => new NamedId { Id = x.Id, Name = $"{x.FirstName} {x.LastName}" }).ToListAsync();
     }
 
     public async Task<Driver?> GetByIdAsync(string id)

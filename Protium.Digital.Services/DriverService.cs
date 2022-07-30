@@ -25,6 +25,11 @@ internal class DriverService : IDriverService
         return drivers.Select(d => new DriverDto(d));
     }
 
+    public async Task<IEnumerable<NamedId>> GetSummariesAsync()
+    {
+        return await _driverRepository.GetSummariesAsync();
+    }
+
     public async Task<DriverDto?> GetByIdAsync(string id)
     {
         var driver = await _driverRepository.GetByIdAsync(id);
